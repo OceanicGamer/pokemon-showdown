@@ -11,9 +11,10 @@ export const commands: Chat.ChatCommands = {
 			throw new Chat.ErrorMessage(`/setmode must be used in a battle room.`);
 		}
 
-		const userRank = room.auth.getDirect(user.id);
-		if (!Users.Auth.atLeast(userRank, '%')) {
-			throw new Chat.ErrorMessage(`/setmode requires Driver (%) or higher.`);
+		const directRank = room.auth.getDirect(user.id);
+		const globalRank = Users.globalAuth.get(user.id);
+		if (!(Users.Auth.atLeast(directRank || '', '%') || Users.Auth.atLeast(globalRank || '', '%'))) {
+			throw new Chat.ErrorMessage(`Access denied - you must be a driver (%) or higher in this room (or globally) to use this command.`);
 		}
 
 		if (!target) return this.parse('/help setmode');
