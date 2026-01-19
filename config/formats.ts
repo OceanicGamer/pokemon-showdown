@@ -213,6 +213,13 @@ export const Formats: import('../sim/dex-formats').FormatList = [
 		banlist: [
 			'Revival Blessing', 'Last Respects', 'Shed Tail', 'King\'s Rock', 'Razor Fang', 'Quick Claw',
 		],
+	{
+		name: "[Gen 9] NatDex Draft",
+		mod: 'gen9',
+		searchShow: true,
+		teraPreviewDefault: true,
+		ruleset: ['Standard Draft', '+Unobtainable', '+Past', 'Min Source Gen = 1'],
+	},
 	},
 	{
 		section: 'Partner Communities',
